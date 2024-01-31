@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:social_media_app/features/presentation/screens/message_screen/models/chatUserModel.dart';
 import 'package:social_media_app/features/presentation/screens/message_screen/widgets/conversationList.dart';
-
+import 'package:socket_io_client/socket_io_client.dart' as IO;
 class Messagescreen extends StatefulWidget {
   const Messagescreen({super.key});
 
@@ -10,7 +10,23 @@ class Messagescreen extends StatefulWidget {
 }
 
 class _MessagescreenState extends State<Messagescreen> {
-  
+  final TextEditingController searchController = TextEditingController();
+  late IO.Socket socket;
+
+  @override
+  void initState() {
+    super.initState();
+    socket = IO.io('http://your_socket_server_url');
+    socket.on('connect', (_) {
+      print('Connected');
+    });
+  }
+
+  @override
+  void dispose() {
+    socket.dispose();
+    super.dispose();
+  }
     List<ChatUsers> chatUsers = [
     ChatUsers(text: "Jane Russel", secondaryText: "Awesome Setup", image: "images/userImage1.jpeg", time: "Now", name: '', messageText: '', imageURL: ''),
     ChatUsers(text: "Glady's Murphy", secondaryText: "That's Great", image: "images/userImage2.jpeg", time: "Yesterday", name: '', messageText: '', imageURL: ''),
@@ -36,9 +52,9 @@ class _MessagescreenState extends State<Messagescreen> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
-                    Text("Conversations",style: TextStyle(fontSize: 32,fontWeight: FontWeight.bold),),
+                 const    Text("Conversations",style: TextStyle(fontSize: 32,fontWeight: FontWeight.bold),),
                     Container(
-                      padding: EdgeInsets.only(left: 8,right: 8,top: 2,bottom: 2),
+                      padding: const  EdgeInsets.only(left: 8,right: 8,top: 2,bottom: 2),
                       height: 30,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(30),
@@ -57,15 +73,17 @@ class _MessagescreenState extends State<Messagescreen> {
               ),
             ),
             Padding(
-  padding: EdgeInsets.only(top: 16,left: 16,right: 16),
+  padding: const  EdgeInsets.only(top: 16,left: 16,right: 16),
+
   child: TextField(
+    controller: searchController,
     decoration: InputDecoration(
       hintText: "Search...",
       hintStyle: TextStyle(color: Colors.grey.shade600),
       prefixIcon: Icon(Icons.search,color: Colors.grey.shade600, size: 20,),
       filled: true,
       fillColor: Colors.grey.shade100,
-      contentPadding: EdgeInsets.all(8),
+      contentPadding: const  EdgeInsets.all(8),
       enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(20),
           borderSide: BorderSide(

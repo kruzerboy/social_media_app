@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:social_media_app/features/presentation/screens/post/add_post_screen.dart';
 import 'package:social_media_app/features/presentation/screens/profile/followers_profile.dart';
+import 'package:social_media_app/features/presentation/screens/setting.dart';
 import 'package:social_media_app/resources/auth_methods.dart';
 import 'package:social_media_app/resources/firestore_methods.dart';
 import 'package:social_media_app/features/presentation/screens/login_screen.dart';
@@ -152,13 +153,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
   );
 },
                 ),
-                ListTile(
+                 ListTile(
                   leading:const Icon(Icons.settings),
-                  title: const Text('Settings and Privacy'),
+                  title:  Text('Settings and Privacy'),
         
                   onTap: () {
-                    // Add your code for Settings and Privacy here
-                  },
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => Setting()
+      ),);
+                  }
+                  
                 ),
                 ListTile(
                   leading: const Icon(Icons.favorite),

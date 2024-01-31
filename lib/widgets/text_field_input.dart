@@ -15,17 +15,17 @@ class TextFieldInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextField( 
-      controller: textEditingController, // Added space after colon
+      controller: textEditingController, 
       decoration: InputDecoration(
-        hintText: hintText, // Replaced 'HintText' with 'hintText'
+        hintText: hintText,
         border: InputBorder.none,
         focusedBorder: InputBorder.none,
         enabledBorder: InputBorder.none,
         filled: true,
         contentPadding: const EdgeInsets.all(8),
       ),
-      keyboardType: textInputType, // Added space after colon
-      obscureText: isPass, // Added space after colon
+      keyboardType: textInputType,
+      obscureText: isPass, 
     );
   }
 }

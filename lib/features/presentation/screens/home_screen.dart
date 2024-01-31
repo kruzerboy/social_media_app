@@ -70,7 +70,7 @@ class HomeTab extends StatelessWidget {
     );
   }
 }
-
+  
 class SearchTab extends StatelessWidget {
   const SearchTab({super.key});
 

@@ -22,8 +22,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:social_media_app/providers/user_provider.dart';
 import 'package:social_media_app/utils/global_variable.dart';
-// import 'package:provider/provider.dart';
-//  import 'package:social_media_app/utils/dimesions.dart';
 class ResponsiveLayout extends StatefulWidget {
   final Widget mobileScreenLayout;
   final Widget webScreenLayout;
